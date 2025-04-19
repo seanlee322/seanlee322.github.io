@@ -102,8 +102,207 @@
         <h2 id="課程學習心得"><a href="#課程學習心得" class="headerlink" title="課程學習心得"></a>課程學習心得</h2><p> <img src="/2025/03/29/20250329/image.png"><br>這段時間學了不少東西，從最一開始的終端機操作、Git 版本控制，一路到後來接觸到 Python 跟一些跟生成式 AI 有關的應用，整個學習過程感覺蠻踏實的。尤其在玩 GenAI 的時候，對現在的 AI 技術有了比較具體的理解，也實際試著串接 API，做出一些東西，算是有一點小小的成就感。</p>
 <p>另外像 Markdown 格式、Hexo 架站這些工具，剛開始看起來好像只是為了寫筆記或整理文件比較方便，但實際上真的在用的時候，會發現它們跟前面學的東西其實都能串在一起。很多東西看似獨立，但慢慢摸熟之後會有一種「這些東西可以拿來做點什麼」的感覺，滿有趣的。</p>
 <p>總體來說，學完之後覺得自己對技術的掌握比以前更有信心，也更有興趣繼續學下去，想看看自己還能做到什麼程度。</p>
-<h2 id="practice"><a href="#practice" class="headerlink" title="practice"></a>practice</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search_string</span>(<span class="params">sorted_list, target</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    在排序過的字串列表中執行二分搜尋</span></span><br><span class="line"><span class="string">    :param sorted_list: 已排序的字串列表</span></span><br><span class="line"><span class="string">    :param target: 要尋找的字串</span></span><br><span class="line"><span class="string">    :return: 若找到則回傳索引，否則回傳 -1</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(sorted_list) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        mid_value = sorted_list[mid]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> mid_value == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> mid_value &lt; target:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 測試字串列表</span></span><br><span class="line">words = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;grape&quot;</span>, <span class="string">&quot;kiwi&quot;</span>, <span class="string">&quot;mango&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;peach&quot;</span>]</span><br><span class="line">words.sort()  <span class="comment"># 確保已排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸入搜尋目標</span></span><br><span class="line">target_word = <span class="built_in">input</span>(<span class="string">&quot;請輸入要搜尋的單字：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行搜尋</span></span><br><span class="line">result = binary_search_string(words, target_word)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示結果</span></span><br><span class="line"><span class="keyword">if</span> result != -<span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找到了「<span class="subst">&#123;target_word&#125;</span>」，位於索引位置 <span class="subst">&#123;result&#125;</span>。&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找不到「<span class="subst">&#123;target_word&#125;</span>」這個字串。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="二分搜尋"><a href="#二分搜尋" class="headerlink" title="二分搜尋"></a>二分搜尋</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search_string</span>(<span class="params">sorted_list, target</span>):</span><br><span class="line">    </span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(sorted_list) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        mid_value = sorted_list[mid]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> mid_value == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> mid_value &lt; target:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">words = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;grape&quot;</span>, <span class="string">&quot;kiwi&quot;</span>, <span class="string">&quot;mango&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;peach&quot;</span>]</span><br><span class="line">words.sort() </span><br><span class="line">target_word = <span class="built_in">input</span>(<span class="string">&quot;請輸入要搜尋的單字：&quot;</span>)</span><br><span class="line">result = binary_search_string(words, target_word)</span><br><span class="line"><span class="keyword">if</span> result != -<span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找到了「<span class="subst">&#123;target_word&#125;</span>」，位於索引位置 <span class="subst">&#123;result&#125;</span>。&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找不到「<span class="subst">&#123;target_word&#125;</span>」這個字串。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h2 id="二分搜尋-逐行分析"><a href="#二分搜尋-逐行分析" class="headerlink" title="二分搜尋 逐行分析"></a>二分搜尋 逐行分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search_string</span>(<span class="params">sorted_list, target</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定義一個名為 <code>binary_search_string</code> 的函式，參數包括：<ul>
+<li><code>sorted_list</code>：已排序好的字串列表</li>
+<li><code>target</code>：欲搜尋的目標字串</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">left = <span class="number">0</span></span><br><span class="line">right = <span class="built_in">len</span>(sorted_list) - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>設定二分搜尋的起始與結束索引：<ul>
+<li><code>left</code> 從 0 開始（列表開頭）</li>
+<li><code>right</code> 為列表長度減一（列表末尾）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> left &lt;= right:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>當 <code>left</code> 小於或等於 <code>right</code> 時，持續進行搜尋迴圈</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mid = (left + right) // <span class="number">2</span></span><br><span class="line">mid_value = sorted_list[mid]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>計算中間索引 <code>mid</code></li>
+<li>取得中間位置對應的字串 <code>mid_value</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> mid_value == target:</span><br><span class="line">    <span class="keyword">return</span> mid</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若中間值等於目標值，回傳該索引（成功找到）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> mid_value &lt; target:</span><br><span class="line">    left = mid + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>若中間字串比目標字串小（字典順序），搜尋右半部，將 <code>left</code> 向右移動</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    right = mid - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>否則搜尋左半部，將 <code>right</code> 向左移動</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>若迴圈結束仍未找到目標，回傳 <code>-1</code> 表示未找到</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">words = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>, <span class="string">&quot;grape&quot;</span>, <span class="string">&quot;kiwi&quot;</span>, <span class="string">&quot;mango&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;peach&quot;</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立一個字串列表 <code>words</code>，包含多個水果名稱</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">words.sort()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>將列表做排序（雖然原本已排序，這是保險措施，因為二分搜尋法需要在<strong>排序後的資料</strong>上執行）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target_word = <span class="built_in">input</span>(<span class="string">&quot;請輸入要搜尋的單字：&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>從使用者輸入一個目標字串 <code>target_word</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = binary_search_string(words, target_word)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>呼叫 <code>binary_search_string</code> 函式，傳入排序好的 <code>words</code> 和使用者輸入的字串，並將回傳結果存入 <code>result</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> result != -<span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找到了「<span class="subst">&#123;target_word&#125;</span>」，位於索引位置 <span class="subst">&#123;result&#125;</span>。&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;找不到「<span class="subst">&#123;target_word&#125;</span>」這個字串。&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根據回傳結果輸出訊息：<ul>
+<li>若結果不是 <code>-1</code>，代表有找到，印出位置</li>
+<li>否則顯示找不到的訊息</li>
+</ul>
+</li>
+</ul>
+<h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs_recursive</span>(<span class="params">graph, node, visited=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">if</span> visited <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        visited = <span class="built_in">set</span>()  <span class="comment"># 初始只執行一次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">        <span class="built_in">print</span>(node)           <span class="comment"># 訪問此節點</span></span><br><span class="line">        visited.add(node)     <span class="comment"># 標記為已訪問</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:  <span class="comment"># 對每個相鄰節點執行遞迴 DFS</span></span><br><span class="line">            dfs_recursive(graph, neighbor, visited)</span><br><span class="line"></span><br><span class="line">dfs_recursive(graph, <span class="string">&#x27;A&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="DFS-逐行分析"><a href="#DFS-逐行分析" class="headerlink" title="DFS 逐行分析"></a>DFS 逐行分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定義一個圖（Graph），用「鄰接表（adjacency list）」的方式來表示。</li>
+<li>每個鍵（例如 <code>&#39;A&#39;</code>）代表一個節點，每個值是一個列表，代表與該節點相連的節點。</li>
+<li>範例中：  <ul>
+<li><code>&#39;A&#39;</code> 連到 <code>&#39;B&#39;</code> 和 <code>&#39;C&#39;</code></li>
+<li><code>&#39;B&#39;</code> 連到 <code>&#39;D&#39;</code> 和 <code>&#39;E&#39;</code></li>
+<li><code>&#39;C&#39;</code> 連到 <code>&#39;F&#39;</code></li>
+<li><code>&#39;D&#39;</code>, <code>&#39;F&#39;</code> 為終點（無子節點）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dfs_recursive</span>(<span class="params">graph, node, visited=<span class="literal">None</span></span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定義一個名為 <code>dfs_recursive</code> 的函式，使用 <strong>遞迴（recursive）</strong> 實作 DFS。</li>
+<li>參數：<ul>
+<li><code>graph</code>: 圖的結構</li>
+<li><code>node</code>: 當前訪問的節點</li>
+<li><code>visited</code>: 一個用來記錄已訪問節點的集合（初始值為 <code>None</code>）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> visited <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    visited = <span class="built_in">set</span>()  <span class="comment"># 初始只執行一次</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一次進入函式時會建立一個空集合 <code>visited</code>，記錄哪些節點已被訪問過，避免重複與無限遞迴。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果目前的節點還沒有被訪問，就進入處理邏輯。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(node)           <span class="comment"># 訪問此節點</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>印出目前訪問的節點，表示這個節點是 DFS 的一部分。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visited.add(node)     <span class="comment"># 標記為已訪問</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>將該節點加入 <code>visited</code> 集合中，避免未來重複造訪。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:  <span class="comment"># 對每個相鄰節點執行遞迴 DFS</span></span><br><span class="line">    dfs_recursive(graph, neighbor, visited)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍歷目前節點的所有「鄰接節點（neighbor）」</li>
+<li>對每一個相鄰節點再呼叫一次 <code>dfs_recursive</code>，這就是「遞迴」的核心！</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs_recursive(graph, <span class="string">&#x27;A&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>呼叫 <code>dfs_recursive</code> 函式，從節點 <code>&#39;A&#39;</code> 開始整個 DFS 搜尋流程。</li>
+</ul>
+<hr>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">graph, start</span>):</span><br><span class="line">    visited = <span class="built_in">set</span>()              </span><br><span class="line">    queue = deque([start])       </span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()   </span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="built_in">print</span>(node)         </span><br><span class="line">            visited.add(node)    </span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:</span><br><span class="line">                <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    queue.append(neighbor)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bfs(graph, <span class="string">&#x27;A&#x27;</span>) </span><br></pre></td></tr></table></figure>
+
+<h2 id="BFS-逐行分析"><a href="#BFS-逐行分析" class="headerlink" title="BFS 逐行分析"></a>BFS 逐行分析</h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br></pre></td></tr></table></figure>
+<ul>
+<li>從 <code>collections</code> 模組匯入 <code>deque</code>（雙端佇列），它比 list 更適合用作 queue，支援高效的 <code>popleft()</code> 操作。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定義一個圖，使用 <strong>鄰接表（Adjacency List）</strong> 的方式。</li>
+<li>節點 <code>&#39;A&#39;</code> 連到 <code>&#39;B&#39;</code> 和 <code>&#39;C&#39;</code>，以此類推。</li>
+<li>這是一個有向圖。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">graph, start</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定義一個名為 <code>bfs</code> 的函式，接收：<ul>
+<li><code>graph</code>：圖的結構</li>
+<li><code>start</code>：起始節點</li>
+</ul>
+</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visited = <span class="built_in">set</span>()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立一個集合 <code>visited</code>，用來記錄哪些節點已經被拜訪過，避免重複與死循環。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = deque([start])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立一個 queue（佇列），初始放入起始節點 <code>start</code>。</li>
+<li>BFS 特性：先進先出（FIFO），所以使用 <code>deque</code> 來高效處理。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> queue:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>當 queue 非空時，持續執行迴圈，這是 BFS 的主要邏輯。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node = queue.popleft()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>從 queue 的左邊取出一個節點（即下一個要處理的節點），這是 BFS 的核心：<strong>一層一層搜尋</strong>。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>檢查這個節點是否已經被訪問過。</li>
+<li>若未拜訪，則繼續處理；若已拜訪，則跳過。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(node)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>印出目前拜訪的節點。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visited.add(node)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>將目前節點加入 <code>visited</code> 集合，表示它已被處理過。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍歷當前節點相鄰的所有節點（鄰居）。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">    queue.append(neighbor)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果鄰居節點尚未被拜訪，就把它加入 queue，等待後續處理。</li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bfs(graph, <span class="string">&#x27;A&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>呼叫 <code>bfs</code> 函式，從節點 <code>&#39;A&#39;</code> 開始進行廣度優先搜尋。</li>
+</ul>
 
       
     </div>
