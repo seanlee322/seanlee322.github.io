@@ -77,6 +77,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20250502" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/14/20250502/" class="article-date">
+  <time class="dt-published" datetime="2025-05-14T12:24:12.000Z" itemprop="datePublished">2025-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/05/14/20250502/">20250502</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="python-學習筆記-–-deque-與-list-的比較"><a href="#python-學習筆記-–-deque-與-list-的比較" class="headerlink" title="python 學習筆記 – deque 與 list 的比較"></a>python 學習筆記 – deque 與 list 的比較</h2><h2 id="list-版本"><a href="#list-版本" class="headerlink" title="list 版本"></a>list 版本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">graph, start</span>):</span><br><span class="line">    visited = <span class="built_in">set</span>()</span><br><span class="line">    queue = [start]             <span class="comment"># 改用 list</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.pop(<span class="number">0</span>)      <span class="comment"># 改用 list 的 pop(0)</span></span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="built_in">print</span>(node)</span><br><span class="line">            visited.add(node)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:</span><br><span class="line">                <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    queue.append(neighbor)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bfs(graph, <span class="string">&#x27;A&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="deque-版本"><a href="#deque-版本" class="headerlink" title="deque 版本"></a>deque 版本</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">start</span>):</span><br><span class="line">    visited = <span class="built_in">set</span>()            <span class="comment"># 儲存已拜訪的城市</span></span><br><span class="line">    queue = deque([start])     <span class="comment"># 使用 deque 初始化搜尋佇列</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        city = queue.popleft()  <span class="comment"># 從左側取出當前城市</span></span><br><span class="line">        <span class="keyword">if</span> city <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="built_in">print</span>(city)         <span class="comment"># 印出目前造訪的城市</span></span><br><span class="line">            visited.add(city)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 將鄰近的城市加入佇列</span></span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[city]:</span><br><span class="line">                <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    queue.append(neighbor)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bfs(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="deque-與-list-的差異"><a href="#deque-與-list-的差異" class="headerlink" title="deque 與 list 的差異"></a>deque 與 list 的差異</h2><p>deque不能中間搜尋，但是list可以 :D</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/14/20250502/" data-id="cmanxhjsv0000arpl8jqx9bhf" data-title="20250502" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-20250419" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/04/19/20250419/" class="article-date">
@@ -372,7 +415,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
     </div>
   </div>
 
@@ -383,6 +426,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/05/14/20250502/">20250502</a>
+          </li>
         
           <li>
             <a href="/2025/04/19/20250419/">20250419</a>
